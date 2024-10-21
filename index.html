@@ -15,7 +15,7 @@
 
 <body>
     <header>
-        <nav>
+        <nav id="nav_bar">
             <a href="#" class="logo">NTN</a>
             <div>
                 <a href="#">Home</a>
@@ -26,7 +26,7 @@
     </header>
     <main>
         <section class="intro">
-            <div class="summary">
+            <div>
                 <h1>
                     NTN, Your ultimate hub for cutting-edge Electronic designs, PCB solutions and seamless software
                     development
@@ -40,93 +40,7 @@
             </div>
             <img src="images/team_picture.jpeg" alt="Picture of the team" height="417" width="425">
         </section>
-        <section class="services_container">
-        <h2>Services</h2>
-            <div class="services">
-                <div>
-                    <h2>Custom Circuit Design and Programming</h2>
-                    <img src="images/hardware_design.jpeg" alt="Desiging Hardware" height="417" width="425">
-                    <ul>
-                        <h2>Power systems design</h2>
-                        <li>Custom power supply design</li>
-                        <li>DC/AC converters design</li>
-                        <li>STM32 ARM microcontrollers based design</li>
-                        <li>Microchip PIC</li>
-                        <li>AVR/Arduino</li>
-                        <li>FPGA designs</li>
-                    </ul>
-                </div>
-                <Div>
-                    <h2>PCB design and layout</h2>
-                    <img src="images/PCB_layout.jpeg" alt="PCB Layout" height="417" width="425">
-                    <ul>
-                        <li>Multilayer PCB design</li>
-                        <li>High speed PCB desing</li>
-                    </ul>
-                </Div>
-                <div>
-                    <h2>Full stack web development</h2>
-                    <img src="images/software_design.jpeg" alt="Designing software" height="417" width="425">
-                    <ul>
-                        <li>Back End development</li>
-                        <li>Front end development</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
-        <section class="project">
-            <h2>Past projects </h2>
-            <div>
-                <img src="images/pr1.jpg" alt="First Project">
-                <img src="images/pr2.jpg" alt="Second Project">
-                <img src="images/pr3.jpg" alt="Third Project">
-            </div>
-        </section>
-        <section class="contact">
-            <h2>Have an idea? We got you covered!</h2>
-            <form id="feedback_form" method="POST" action="">
-                <div>
-                    <div>
-                        <label for="first_name">First Name:</label>
-                        <input type="text" name="" id="first_name" placeholder="John">
-                    </div>
-                    <div>
-                        <label for="last_name">Last Name:</label>
-                        <input type="text" name="" id="last_name" placeholder="Smith">
-                    </div>
-                </div>
-                <div>
-                    <label for="company_name">Company</label>
-                    <input type="text" name="" id="company_name" placeholder="company">
-                </div>
-                <div>
-                    <label for="E-mail">E-Mail</label>
-                    <input type="email" id="E-mail" placeholder="johnsmith@mail.com">
-                </div>
-                <div>
-                    <label for="Phone">Phonel</label>
-                    <input type="phone" id="phone" placeholder="(XXX) XXX-XXXX">
-                </div>
-                <div>
-                    <p>Tell us about your idea</p>
-                    <label for="project_description"></label>
-                    <textarea name="" id="project_description" placeholder="Lorem Ipsum..."></textarea>
-                </div>
-                <p>Attach a Document7</p>
-                <label for="specs"></label>
-                <input type="file" name="Project Description" id="specs">
-                <input type="submit" value="submit">
-            </form>
-        </section>
-        <section>
-            <p id="about_us"> We are a team of engineers who specialize in custom electronic designs and bespoke
-                microcontroller solutions. Our full-cycle services encompass
-                both cutting-edge hardware design and seamless software development, ensuring your vision comes to life
-                with
-                precision and expertise
-            </p>
-        </section>
     </main>
     <footer>
         <a target="_blank" href="https://www.linkedin.com/"><img src="images/icon-logo-linkedin.png"
@@ -135,7 +49,6 @@
                 alt="Logo Instagram"></a>
         <a target="_blank" href="https://www.youtube.com/"><img src="images/icon-logo-youtube.png" alt=""></a>
     </footer>
-
     <script src='src/index.js'></script>
 </body>
 
