@@ -38,11 +38,11 @@ const projects = [
 
 // Create fields for contact section
 const fields = [
-    { label: 'First Name*:', type: 'text', id: 'first_name', placeholder: 'John', required: true},
+    { label: 'First Name*:', type: 'text', id: 'first_name', placeholder: 'John', required: true },
     { label: 'Last Name:', type: 'text', id: 'last_name', placeholder: 'Smith' },
     { label: 'Company:', type: 'text', id: 'company_name', placeholder: 'company' },
     { label: 'E-Mail*:', type: 'email', id: 'E-mail', placeholder: 'johnsmith@mail.com', required: true },
-    { label: 'Phone*:', type: 'tel', id: 'phone', placeholder: '(XXX) XXX-XXXX', required: true},
+    { label: 'Phone*:', type: 'tel', id: 'phone', placeholder: '(XXX) XXX-XXXX', required: true },
 ];
 
 // Create services section
@@ -59,7 +59,7 @@ function createServicesSection(arrobj) {
     serviceListDiv.className = 'service_list';
 
     // Iterate over services to create elements
-    arrobj.forEach(function(service) {
+    arrobj.forEach(function (service) {
         const serviceDiv = document.createElement('div');
 
         const serviceTitle = document.createElement('h2');
@@ -71,7 +71,7 @@ function createServicesSection(arrobj) {
         serviceImage.height = 417;
         serviceImage.width = 425;
         const serviceList = document.createElement('ul');
-        service.items.forEach(function(item) {
+        service.items.forEach(function (item) {
             const listItem = document.createElement('li');
             listItem.textContent = item;
             serviceList.appendChild(listItem);
@@ -100,7 +100,7 @@ function createProjectsSection(arrobj) {
     portfolioDiv.className = 'portfolio';
 
     // Iterate over projects to create images
-    arrobj.forEach(function(project) {
+    arrobj.forEach(function (project) {
         const img = document.createElement('img');
         img.src = project.src;
         img.alt = project.alt;
@@ -124,7 +124,7 @@ function createContactSection(arrobj) {
     feedbackForm.id = 'feedback_form';
     feedbackForm.method = 'POST';
     // Create fields
-    arrobj.forEach(function(field) {
+    arrobj.forEach(function (field) {
         const fieldDiv = document.createElement('div');
         const label = document.createElement('label');
         label.setAttribute('for', field.id);
@@ -174,18 +174,25 @@ function createContactSection(arrobj) {
     feedbackForm.appendChild(submitButton);
     // Append form to contact section
     contactSection.appendChild(feedbackForm);
+
+     //Creating a paragraph after the form to meet requirement to modify innerHTML in response to user interaction 
+     const confirmationMessage = document.createElement('p');
+     confirmationMessage.id = 'confirmation';
+     confirmationMessage.style.color = 'green'; // Style for confirmation message
+     confirmationMessage.style.margin='auto'; //center the message on the page 
+     contactSection.appendChild(confirmationMessage); // Append it to the contact section
     return contactSection;
 }
 
 // Adding an event listener on the form 
-feedbackForm.addEventListener('submit', function(event) {
-    event.preventDefault(); 
+feedbackForm.addEventListener('submit', function (event) {
+    event.preventDefault();
     const emailField = document.getElementById('E-mail');
     const phoneField = document.getElementById('phone')
     // Regex for email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     //Regex for phone validation  (reference : https://www.javascript-coder.com/form-validation/javascript-form-validation-phone-number/)
-    const phoneRegex =  /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im ;
+    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
     if (!emailRegex.test(emailField.value)) {
         alert('Please enter a valid email address.');
         return;
@@ -194,8 +201,18 @@ feedbackForm.addEventListener('submit', function(event) {
         alert('Please enter a valid phone number.');
         return;
     }
+    // We update the paragraph on the page if user succesfully submitted
+    const confirmationMessage = document.getElementById('confirmation');
+    confirmationMessage.innerText = 'Thank you for your submission! We will get back to you soon.';
+
+    // We reset paragraph back to empty after 5 seconds
+    setTimeout(() => {
+        confirmationMessage.innerText = '';
+    }, 5000); 
 
     alert('Form submitted successfully!');
+    // reset the form 
+   feedbackForm.reset();
 });
 
 // Create the 3 sections for the main body
@@ -206,8 +223,8 @@ const contactSection = createContactSection(fields);
 // Add event listeners for project images
 const portfolioDiv = projectsSection.querySelector('.portfolio');
 const projectImages = portfolioDiv.querySelectorAll('img');
-projectImages.forEach(function(img) {
-    img.addEventListener('click', function(event) {
+projectImages.forEach(function (img) {
+    img.addEventListener('click', function (event) {
         const confirmed = confirm('Interested in this project?');
         if (confirmed) {
             alert("Send us an email at NTN@NTN.com and we'll tell you all about it!");
@@ -219,7 +236,7 @@ projectImages.forEach(function(img) {
 const aboutUsSection = document.createElement('section');
 //checking if the session was created successfully 
 if (aboutUsSection) {
-    aboutUsSection.id ='about_us';
+    aboutUsSection.id = 'about_us';
     aboutUsSection.innerHTML = '<h2>Who are we?</h2><p> We are a team of engineers who specialize in custom electronic designs and bespoke microcontroller solutions. Our full-cycle services encompass both cutting-edge hardware design and seamless software development, ensuring your vision comes to life with precision and expertise.</p>';
 }
 // Using DocumentFragment 
@@ -237,7 +254,7 @@ mainElement.appendChild(fragment);
 
 // using DOM traversal last child to style the form input button
 const submit_button = feedbackForm.lastChild;
-submit_button.style.backgroundColor = '#eab676'; 
+submit_button.style.backgroundColor = '#eab676';
 submit_button.style.fontSize = '1.2em';
 submit_button.style.margin = 'auto';
 
