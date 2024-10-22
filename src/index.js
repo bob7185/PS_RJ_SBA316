@@ -38,11 +38,11 @@ const projects = [
 
 // Create fields for contact section
 const fields = [
-    { label: 'First Name*:', type: 'text', id: 'first_name', placeholder: 'John', required: true },
+    { label: 'First Name*:', type: 'text', id: 'first_name', placeholder: 'John', required: true},
     { label: 'Last Name:', type: 'text', id: 'last_name', placeholder: 'Smith' },
     { label: 'Company:', type: 'text', id: 'company_name', placeholder: 'company' },
     { label: 'E-Mail*:', type: 'email', id: 'E-mail', placeholder: 'johnsmith@mail.com', required: true },
-    { label: 'Phone*:', type: 'tel', id: 'phone', placeholder: '(XXX) XXX-XXXX', pattern: '^\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}$', required: true },
+    { label: 'Phone*:', type: 'tel', id: 'phone', placeholder: '(XXX) XXX-XXXX', required: true},
 ];
 
 // Create services section
@@ -137,6 +137,9 @@ function createContactSection(arrobj) {
         if (field.pattern) input.pattern = field.pattern;
         fieldDiv.appendChild(label);
         fieldDiv.appendChild(input);
+        //adding a class flex to evenly align the elemnts 
+        fieldDiv.style.display = 'flex';
+        fieldDiv.style.justifyContent = 'space-between';
         feedbackForm.appendChild(fieldDiv);
     });
 
@@ -167,6 +170,9 @@ function createContactSection(arrobj) {
     const submitButton = document.createElement('input');
     submitButton.type = 'submit';
     submitButton.value = 'Submit';
+    submitButton.style.backgroundColor = '#eab676';
+    submitButton.style.fontSize = '1.2em';
+    submitButton.style.margin = 'auto';
     feedbackForm.appendChild(submitButton);
     // Append form to contact section
     contactSection.appendChild(feedbackForm);
@@ -175,13 +181,22 @@ function createContactSection(arrobj) {
 
 // Adding an event listener on the form 
 feedbackForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); 
     const emailField = document.getElementById('E-mail');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex for email validation
+    const phoneField = document.getElementById('phone')
+    // Regex for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    //Regex for phone validation  (reference : https://www.javascript-coder.com/form-validation/javascript-form-validation-phone-number/)
+    const phoneRegex =  /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im ;
     if (!emailRegex.test(emailField.value)) {
         alert('Please enter a valid email address.');
         return;
     }
+    if (!phoneRegex.test(phoneField.value)) {
+        alert('Please enter a valid phone number.');
+        return;
+    }
+
     alert('Form submitted successfully!');
 });
 
@@ -194,10 +209,11 @@ const contactSection = createContactSection(fields);
 const portfolioDiv = projectsSection.querySelector('.portfolio');
 const projectImages = portfolioDiv.querySelectorAll('img');
 projectImages.forEach(function(img) {
-    img.addEventListener('click', function() {
+    img.addEventListener('click', function(event) {
+            clickedImage = event.target;
         const confirmed = confirm('Interested in this project?');
         if (confirmed) {
-            alert('Send us an email at NTN@NTN.com and we\'ll tell you all about it!');
+            alert("Send us an email at NTN@NTN.com and we'll tell you all about it!");
         }
     });
 });
@@ -209,7 +225,6 @@ if (aboutUsSection) {
     aboutUsSection.id ='about_us';
     aboutUsSection.innerHTML = '<h2>Who are we?</h2><p> We are a team of engineers who specialize in custom electronic designs and bespoke microcontroller solutions. Our full-cycle services encompass both cutting-edge hardware design and seamless software development, ensuring your vision comes to life with precision and expertise.</p>';
 }
-
 // Using DocumentFragment 
 const fragment = document.createDocumentFragment();
 fragment.appendChild(servicesSection);

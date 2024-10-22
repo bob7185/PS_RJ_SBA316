@@ -13,17 +13,16 @@ header, footer{
   gap: 15px;
   justify-content: center;
   margin-bottom: 20px;
-
 }
 
-.services{
+.services, #section_services, .profile_intro,.contact{
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 15px;
 }
 
-.service_list{
+.service_list, .portfolio{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -32,13 +31,13 @@ header, footer{
 
 footer, nav{
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
 nav a{
   margin-left: 30px;
+  text-decoration: none;
 }
 
 body{
@@ -64,7 +63,7 @@ h2{
 
 p, li{
   font-size: 1.1em;
-  color: #F9F8FF;
+  color: #F9F8FF;    
 }
 
 #nav_bar a:hover {
@@ -72,29 +71,28 @@ p, li{
 }
 
 .cta{
-  display: inline-block;
   background: linear-gradient(#8e86b5, #acaeed);
   color: white;
   border-radius: 50px;
   padding: 20px 30px;
-}
-
-.portfolio{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
-  justify-content: space-between;
+  text-align: center;
+  text-decoration: none;
+  margin: auto;
 }
 
 .about{
   display: flex;
   flex-direction: column;
+  
 }
 
 .contact{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 30px;
 }
-
+#feedback_form{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 25px;
+}
