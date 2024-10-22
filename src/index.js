@@ -49,6 +49,7 @@ const fields = [
 function createServicesSection(arrobj) {
     const servicesSection = document.createElement('section');
     servicesSection.className = 'services';
+    servicesSection.id = 'service'; // used to redirect the link in nav bar to service 
 
     const servicesHeader = document.createElement('h2');
     servicesHeader.textContent = 'Services';
@@ -89,7 +90,7 @@ function createServicesSection(arrobj) {
 function createProjectsSection(arrobj) {
     const projectSection = document.createElement('section');
     projectSection.className = 'project';
-    projectSection.id = 'section_services';
+    projectSection.id = 'section_project';
 
     const projectHeader = document.createElement('h2');
     projectHeader.textContent = 'Past Projects';
@@ -170,9 +171,6 @@ function createContactSection(arrobj) {
     const submitButton = document.createElement('input');
     submitButton.type = 'submit';
     submitButton.value = 'Submit';
-    submitButton.style.backgroundColor = '#eab676';
-    submitButton.style.fontSize = '1.2em';
-    submitButton.style.margin = 'auto';
     feedbackForm.appendChild(submitButton);
     // Append form to contact section
     contactSection.appendChild(feedbackForm);
@@ -210,7 +208,6 @@ const portfolioDiv = projectsSection.querySelector('.portfolio');
 const projectImages = portfolioDiv.querySelectorAll('img');
 projectImages.forEach(function(img) {
     img.addEventListener('click', function(event) {
-            clickedImage = event.target;
         const confirmed = confirm('Interested in this project?');
         if (confirmed) {
             alert("Send us an email at NTN@NTN.com and we'll tell you all about it!");
@@ -236,3 +233,26 @@ fragment.appendChild(aboutUsSection)
 const mainElement = document.querySelector('main');
 // Append the DocumentFragment to the main element
 mainElement.appendChild(fragment);
+
+
+// using DOM traversal last child to style the form input button
+const submit_button = feedbackForm.lastChild;
+submit_button.style.backgroundColor = '#eab676'; 
+submit_button.style.fontSize = '1.2em';
+submit_button.style.margin = 'auto';
+
+
+// making the images focus when users hover the mouse over them then back to normal
+const imagesElements = mainElement.querySelectorAll('img');
+imagesElements.forEach(image => {
+    image.addEventListener('mouseover', function (event) {
+        event.preventDefault();
+        let focusedImage = event.target;
+        focusedImage.classList.add('focused');
+    });
+    image.addEventListener('mouseout', function (event) {
+        event.preventDefault();
+        let focusedImage = event.target;
+        focusedImage.classList.remove('focused');
+    })
+});

@@ -15,7 +15,7 @@ header, footer{
   margin-bottom: 20px;
 }
 
-.services, #section_services, .profile_intro,.contact{
+.services, #section_project, .profile_intro,.contact{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,13 +79,6 @@ p, li{
   text-decoration: none;
   margin: auto;
 }
-
-.about{
-  display: flex;
-  flex-direction: column;
-  
-}
-
 .contact{
   display: flex;
   gap: 30px;
@@ -95,4 +88,8 @@ p, li{
   flex-direction: column;
   margin: auto;
   gap: 25px;
+}
+
+.focused{
+  transform: scale(1.1);
 }
